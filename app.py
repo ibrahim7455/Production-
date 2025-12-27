@@ -54,11 +54,10 @@ def analysis_page(df):
     st.title("📊 Telecom Churn Analysis Dashboard")
 
     # ---------- KPIs ----------
-    col1, col2, col3 = st.columns(3)
+    col1, col2 = st.columns(2)
 
     col1.metric("Total Customers", len(df))
     col2.metric("Churn Rate", f"{df['churn'].mean()*100:.2f}%")
-    col3.metric("Avg Monthly Charges", f"{df['monthlycharges'].mean():.2f}")
 
     st.divider()
 
