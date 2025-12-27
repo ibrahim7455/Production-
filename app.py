@@ -55,10 +55,8 @@ def analysis_page(df):
 
     # ---------- KPIs ----------
     col1, col2 = st.columns(2)
-
     col1.metric("Total Customers", len(df))
     col2.metric("Churn Rate", f"{df['churn'].mean()*100:.2f}%")
-
     st.divider()
 
     # ---------- Charts ----------
@@ -212,3 +210,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
