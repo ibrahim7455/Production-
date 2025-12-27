@@ -15,6 +15,10 @@ def load_data():
     if 'customerid' in df.columns:
         df.drop(columns=['customerid'], inplace=True)
 
+    # FIX: churn to numeric
+    if df['churn'].dtype == 'object':
+        df['churn'] = df['churn'].map({'Yes': 1, 'No': 0})
+
     le = LabelEncoder()
     categorical_cols = [
         'gender', 'partner', 'dependents', 'phoneservice', 'multiplelines',
@@ -34,6 +38,7 @@ def load_data():
     y = df['churn']
 
     return df, X, y
+
 
 # ================================
 # Load model
