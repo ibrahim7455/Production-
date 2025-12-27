@@ -64,13 +64,14 @@ def analysis_page(df):
 
     # ---------- Charts ----------
     st.subheader("Payment Method Distribution")
+    payment_counts = df['paymentmethod'].value_counts().reset_index()
+    payment_counts.columns = ['Payment Method', 'Count']  # rename columns
     fig = px.bar(
-        df['paymentmethod'].value_counts().reset_index(),
-        x='index',
-        y='paymentmethod',
-        labels={'index': 'Payment Method', 'paymentmethod': 'Count'},
+        payment_counts,
+        x='Payment Method',
+        y='Count',
         title="Payment Method Count"
-    )
+)
     st.plotly_chart(fig, use_container_width=True)
 
     st.subheader("Contract Types")
